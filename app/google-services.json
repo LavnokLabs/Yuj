@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "769904948957",
+    "firebase_url": "https://theyuj-426a3.firebaseio.com",
+    "project_id": "theyuj-426a3",
+    "storage_bucket": "theyuj-426a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:769904948957:android:b27adf0808bc468bf24d34",
+        "android_client_info": {
+          "package_name": "com.lavnok.yuj"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "769904948957-smm9ecddfc183mrl82kflk1gmsf2hppu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lavnok.yuj",
+            "certificate_hash": "652ace3cb94fb75e1e02fc8241ce4ecafdc75bf1"
+          }
+        },
+        {
+          "client_id": "769904948957-1ioj1789589o2qa4o3tdhnm584vtkrvs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAg8fMxce8BXKsepJ1P8NiEjE_dpJ2YKq0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "769904948957-1ioj1789589o2qa4o3tdhnm584vtkrvs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

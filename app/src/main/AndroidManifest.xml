@@ -9,7 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ConfigureProfileActivity"></activity>
+        <activity
+            android:name=".AdminActivity"
+            android:label="@string/title_activity_admin"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lavnok.yuj.MainActivity" />
+        </activity>
+        <activity android:name=".ConfigureProfileActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".WelcomeScreen">
             <intent-filter>

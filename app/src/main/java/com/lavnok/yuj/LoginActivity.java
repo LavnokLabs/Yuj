@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
     EditText e1,e2;
-    String TAG="com.lavnok.labs.yogapp-Logger";
+    String TAG="com.lavnok.yuj-Logger";
     TextView error;
     Button b2;
     String verification_Code;

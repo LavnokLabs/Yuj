@@ -16,20 +16,12 @@ import com.lavnok.yuj.R;
 
 public class VideosFragment extends Fragment {
 
-    private VideosViewModel videosViewModel;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        videosViewModel =
-                ViewModelProviders.of(this).get(VideosViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_videos, container, false);
         final TextView textView = root.findViewById(R.id.text_dashboard);
-        videosViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        textView.setText("This is videos fragment");
         return root;
     }
 }

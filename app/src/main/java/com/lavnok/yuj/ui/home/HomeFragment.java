@@ -20,20 +20,10 @@ import com.lavnok.yuj.R;
 
 public class HomeFragment extends Fragment {
     ViewFlipper  simpleViewFlipper;
-
-    private HomeViewModel homeViewModel;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-//        final TextView textView = root.findViewById(R.id.text_home);
-//        homeViewModel.getText().observe(this, new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
 
         simpleViewFlipper = (ViewFlipper) root.findViewById(R.id.simpleViewFlipper); // get the reference of ViewFlipper
         simpleViewFlipper.setFlipInterval(3000);

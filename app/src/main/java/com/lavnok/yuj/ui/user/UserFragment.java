@@ -15,24 +15,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.lavnok.yuj.R;
-import com.lavnok.yuj.ui.more.MoreViewModel;
 
 public class UserFragment extends Fragment {
 
-    private UserViewModel userViewModel;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        userViewModel =
-                ViewModelProviders.of(this).get(UserViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_more, container, false);
+        View root = inflater.inflate(R.layout.fragment_user, container, false);
         final TextView textView = root.findViewById(R.id.text_user);
-        userViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        textView.setText("This is user fragment");
         return root;
     }
 

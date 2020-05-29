@@ -16,20 +16,12 @@ import com.lavnok.yuj.R;
 
 public class BatchesFragment extends Fragment {
 
-    private BatchesViewModel batchesViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        batchesViewModel =
-                ViewModelProviders.of(this).get(BatchesViewModel.class);
         View root = inflater.inflate(R.layout.fragment_batches, container, false);
         final TextView textView = root.findViewById(R.id.text_notifications);
-        batchesViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        textView.setText("Coming Soon!!");
         return root;
     }
 }

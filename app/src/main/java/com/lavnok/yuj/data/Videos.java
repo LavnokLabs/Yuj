@@ -1,67 +1,59 @@
 package com.lavnok.yuj.data;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+import android.util.Log;
 
+import java.io.ByteArrayOutputStream;
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 public class Videos {
+    String TAG="com.lavnok.yuj-Logger";
 
-    private enum DifficultyLevel {
-        BEGINNER, EXPERIENCED_BEGINNER, INTERMIDIATE, ADVANCED_INTERMEDIATE
-    }
 
     private String VideoId;
-    private SimpleDateFormat s = new SimpleDateFormat("ddMMyyyyhhmmss");
-    private String TimeStamp = s.format(new Date());
+    private String TimeStamp;
     private String Name;
-    private Bitmap Thumbnail;
-    private String Source;
+    private String Thumbnail;
+    private String YouTubeURL;
     private String Description;
     private String Benefits;
-    private boolean isYouTubeLink;
-    private String YouTubeId;
     private String[] Tags;
-    private String[] Beneficiaries;
     private int Duration;
-    private String HomePageTag;
+    private String DifficultyLevel;
 
-    public void setVideoId(String videoId) {
-        VideoId = videoId;
+    public void setVideoId() {
+        VideoId = UUID.randomUUID().toString();
     }
 
-    public Videos(String name, Bitmap thumbnail, String source, String description, String benefits, boolean isYouTubeLink, String youTubeId, String[] tags, String[] beneficiaries, int duration,String homePageTag) {
-//        VideoId=setVideoId();
-        Name = name;
-        Thumbnail = thumbnail;
-        TimeStamp = new SimpleDateFormat("ddMMyyyyhhmmss").format(new Date());
-        Source = source;
-        Description = description;
-        Benefits = benefits;
-        this.isYouTubeLink = isYouTubeLink;
-        YouTubeId = youTubeId;
-        Tags = tags;
-        Beneficiaries = beneficiaries;
-        Duration = duration;
-        HomePageTag=homePageTag;
+    public void setTimeStamp() {
+        String ts = String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()));
+        Log.d(TAG,"Setting video timestamp for id "+VideoId+":"+ts);
+        TimeStamp = ts;
     }
 
-    public Videos(String videoId, String timeStamp, String name, Bitmap thumbnail, String source, String description, String benefits, boolean isYouTubeLink, String youTubeId, String[] tags, String[] beneficiaries, int duration,String homePageTag) {
-        VideoId = videoId;
-        TimeStamp = timeStamp;
+    public String getTimeStamp(){
+        return VideoId;
+    }
+
+    public Videos(String name, Bitmap thumbnail, String youTubeURL, String description, String benefits, String[] tags, int duration, String difficultyLevel) {
+        setVideoId();
+        setTimeStamp();
         Name = name;
-        Thumbnail = thumbnail;
-        Source = source;
+        Thumbnail = getStringFromBitmap(thumbnail);
+        YouTubeURL = youTubeURL;
         Description = description;
         Benefits = benefits;
-        this.isYouTubeLink = isYouTubeLink;
-        YouTubeId = youTubeId;
         Tags = tags;
-        Beneficiaries = beneficiaries;
         Duration = duration;
-        HomePageTag=homePageTag;
+        DifficultyLevel = difficultyLevel;
     }
 
     public Map<String, Object> toMap() {
@@ -70,17 +62,37 @@ public class Videos {
         result.put("TimeStamp", TimeStamp);
         result.put("Name", Name);
         result.put("Thumbnail", Thumbnail);
-        result.put("Source", Source);
         result.put("Description", Description);
         result.put("Benefits", Benefits);
-        result.put("isYouTubeLink", isYouTubeLink);
-        result.put("YouTubeId", YouTubeId);
         result.put("Tags", Tags);
-        result.put("Beneficiaries", Beneficiaries);
+        result.put("YouTubeUrl", YouTubeURL);
         result.put("Duration", Duration);
-        result.put("HomePageTag", HomePageTag);
+        result.put("DifficultyLevel", DifficultyLevel);
 
         return result;
+    }
+
+    private String getStringFromBitmap(Bitmap bitmapPicture) {
+        final int COMPRESSION_QUALITY = 100;
+        String encodedImage;
+        ByteArrayOutputStream byteArrayBitmapStream = new ByteArrayOutputStream();
+        bitmapPicture.compress(Bitmap.CompressFormat.PNG, COMPRESSION_QUALITY,
+                byteArrayBitmapStream);
+        byte[] b = byteArrayBitmapStream.toByteArray();
+        encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
+        return encodedImage;
+    }
+
+    public Bitmap getBitmapFromString() {
+        byte[] decodedString = Base64.decode(Thumbnail, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        return decodedByte;
+    }
+
+    public Bitmap getBitmapFromString(String stringPicture) {
+        byte[] decodedString = Base64.decode(stringPicture, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        return decodedByte;
     }
 
 

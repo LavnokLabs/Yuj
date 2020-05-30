@@ -35,7 +35,8 @@ import java.util.Map;
 
 public class ConfigureProfileActivity extends AppCompatActivity {
     //third activity - One time call
-    String TAG = "com.lavnok.labs.yogapp-Logger";
+    String TAG="com.lavnok.yuj-Logger";
+
     EditText etName, etEmail, etAge, etNumber, etMedHis;
     CheckBox cbIsInstructor;
     ImageView imAvatar;
@@ -109,8 +110,6 @@ public class ConfigureProfileActivity extends AppCompatActivity {
         updateNameAndPic();
         updateEmail();
         updateOtherInfo();
-        if (cbIsInstructor.isChecked())
-            initiateNewInstructorFlow();
 
         //updating other user datas
         updateUserDB();
@@ -197,8 +196,6 @@ public class ConfigureProfileActivity extends AppCompatActivity {
         mDatabase.updateChildren(userUpdate);
         Log.d(TAG,"Profile updated in 2 DBs successfully");
     }
-    public void initiateNewInstructorFlow() {
-//Do nothing for now
-    }
+
 
 }

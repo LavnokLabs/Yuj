@@ -42,7 +42,7 @@ public class ConfigureProfileActivity extends AppCompatActivity {
     ImageView imAvatar;
     Button btUpload, btRegister, btVerify;
     FirebaseUser user;
-    String MyPREFERENCES="com.lavnok.labs.yougapp.sharedpref";
+    String MyPREFERENCES="com.lavnok.yuj.sharedpref";
 
     private DatabaseReference mDatabase;
 

@@ -6,10 +6,13 @@ import android.util.Base64;
 import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
+import java.sql.Array;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -25,7 +28,7 @@ public class Videos {
     private String YouTubeURL;
     private String Description;
     private String Benefits;
-    private String[] Tags;
+    private ArrayList<String> Tags;
     private int Duration;
     private String DifficultyLevel;
 
@@ -39,7 +42,7 @@ public class Videos {
         TimeStamp = ts;
     }
 
-    public String getTimeStamp(){
+    public String getVideoId(){
         return VideoId;
     }
 
@@ -51,7 +54,9 @@ public class Videos {
         YouTubeURL = youTubeURL;
         Description = description;
         Benefits = benefits;
-        Tags = tags;
+        Tags = new ArrayList();
+        for(String tag:tags)
+            Tags.add(tag);
         Duration = duration;
         DifficultyLevel = difficultyLevel;
     }

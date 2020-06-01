@@ -6,23 +6,37 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".LoginActivity">
-   <LinearLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginTop="100dp"
-        android:padding="20dp"
-        android:backgroundTint="#FFFFFF">
+        android:backgroundTint="#FFFFFF"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-        <EditText
-            android:id="@+id/editText3"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_marginTop="5dp"
-            android:ems="10"
-            android:inputType="phone"
-            android:hint="Enter your phone number"/>
+            android:orientation="horizontal">
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/ccp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/editText3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:hint="Enter phone number"
+                android:padding="3dp"
+                android:inputType="phone"
+                android:textAlignment="center" />
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/button3"
@@ -37,30 +51,32 @@
             android:id="@+id/editText4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="number"
             android:layout_below="@id/button3"
             android:layout_marginTop="5dp"
-            android:visibility="gone"
+            android:ems="10"
             android:hint="Enter OTP"
-            />
+            android:inputType="number"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/button4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Enter OTP"
-            android:onClick="verify"
             android:layout_below="@id/editText4"
             android:layout_marginTop="10dp"
+            android:onClick="verify"
+            android:text="Enter OTP"
             android:visibility="gone" />
+
         <TextView
             android:id="@+id/errorText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
             android:layout_below="@id/button4"
-            android:layout_marginLeft="20px"></TextView>
+            android:layout_marginLeft="20px"
+            android:visibility="invisible"></TextView>
+
+
     </LinearLayout>
 
 </LinearLayout>

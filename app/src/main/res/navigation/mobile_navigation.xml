@@ -27,11 +27,6 @@
         android:id="@+id/navigation_user"
         android:name="com.lavnok.yuj.ui.user.UserFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_user" />
 
-    <fragment
-        android:id="@+id/navigation_more"
-        android:name="com.lavnok.yuj.ui.more.MoreFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
 </navigation>

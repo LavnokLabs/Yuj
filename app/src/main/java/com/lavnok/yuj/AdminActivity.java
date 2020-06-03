@@ -7,6 +7,10 @@ import com.lavnok.yuj.ui.admin.AddVideosFragment;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,12 +22,22 @@ public class AdminActivity extends AppCompatActivity {
     String AdminConfigEnum[] = {"Edit Home Page Tags", "Upload Video", "Remove Video", "Start a batch", "Modify batch"};
     Spinner spin;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.navigation_home, R.id.navigation_videos, R.id.navigation_batches,R.id.navigation_user)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(navView, navController);
+
 
         spin = (Spinner) findViewById(R.id.spinner);
 

@@ -5,6 +5,9 @@ import java.util.Map;
 
 public class User {
 
+    public String userId;
+    public String email;
+    boolean isInstructor;
     public String displayName;
     public int age;
     public String medicalHistory;

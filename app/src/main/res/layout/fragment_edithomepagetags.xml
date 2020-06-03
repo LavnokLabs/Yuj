@@ -10,64 +10,9 @@
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/customborder"
-            android:orientation="vertical">
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:id="@+id/llleft"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Available tags"
-                        android:textAlignment="center" />
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@android:color/darker_gray"/>
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/leftrrv"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-                </LinearLayout>
-            </ScrollView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginTop="200dp">
-
-            <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@android:drawable/ic_media_rew" />
-
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@android:drawable/ic_media_ff" />
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -100,9 +45,39 @@
                         android:id="@+id/rightRRV"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
+
+
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>
+        <ImageButton
+            android:id="@+id/imRefresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_027_circular_arrow"
+            android:layout_gravity="right"
+            android:autofillHints="Refresh" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Available tags"
+        style="@style/TextviewStyle"/>
+        <Spinner
+            android:id="@+id/spinTags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/buttAddTags"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:layout_gravity="right"/>
+</LinearLayout>
+
 
     </LinearLayout>
 </FrameLayout>

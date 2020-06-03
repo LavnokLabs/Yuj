@@ -12,6 +12,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -23,7 +27,9 @@ import com.lavnok.yuj.utils.MyRecyclerViewAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -32,7 +38,8 @@ import java.util.List;
 public class EditHomePageTagsFragment extends Fragment {
     final String TAG = "com.lavnok.yuj-Logger";
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
-//    LinearLayout llleft, llright;
+
+    //    LinearLayout llleft, llright;
     String tagsFromDB;
     String homeTagsFromDB;
     List<String> tagsList;
@@ -40,8 +47,10 @@ public class EditHomePageTagsFragment extends Fragment {
     ArrayList<String> selectedTagsToAdd;
     DatabaseReference ref;
     Context context;
-    RecyclerView leftRRV,rightRRV;
-
+    RecyclerView rightRRV;
+    Spinner spinTags;
+    String tagToAdd;
+    Button butAddToHome;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,37 +60,61 @@ public class EditHomePageTagsFragment extends Fragment {
 
         //region Initialize ui elements
         context = getActivity().getApplicationContext();
-//        llleft = root.findViewById(R.id.llleft);
-//        llright = root.findViewById(R.id.llright);
-
+        spinTags = root.findViewById(R.id.spinTags);
+        butAddToHome = root.findViewById(R.id.buttAddTags);
         //endregion
 
-        ArrayList<String> animalNames = new ArrayList<>();
-        animalNames.add("Horse");
-        animalNames.add("Cow");
-        animalNames.add("Camel");
-        animalNames.add("Sheep");
-        animalNames.add("Goat");
-
+        ref = database.getReference("/tags");
         // set up the RecyclerView
-        leftRRV = root.findViewById(R.id.leftrrv);
-        leftRRV.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
-        rightRRV=root.findViewById(R.id.rightRRV);
+        rightRRV = root.findViewById(R.id.rightRRV);
         rightRRV.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+
+        butAddToHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+        updateHomePageTags();
+            }
+        });
+
+        spinTags.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Log.d(TAG,"Position"+position+" tagsList.get"+tagsList.get(position));
+                tagToAdd = tagsList.get(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         generateLayout();
         return root;
     }
 
-
-
-
-
-
+    public void updateHomePageTags(){
+        if(tagToAdd==null)
+            Toast.makeText(context, "Unable to add tag. null", Toast.LENGTH_SHORT).show();
+        else
+        {
+            try {
+                if(homeTagsFromDB!=null)
+                    tagToAdd=homeTagsFromDB+","+tagToAdd;
+                ref.child("hometag").child("value").setValue(tagToAdd);
+                Log.d(TAG, "Video successfully added to DB");
+                generateLayout();
+                Toast.makeText(getActivity().getApplicationContext(), "Upload successful.", Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getActivity().getApplicationContext(), "Unable to upload videos.", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 
     public void generateLayout() {
 
-        ref = database.getReference("/tags");
+
 
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -93,22 +126,17 @@ public class EditHomePageTagsFragment extends Fragment {
                         tagsFromDB = dataSnapshot.child("tag").child("value").getValue(String.class);
                         tagsList = Arrays.asList(tagsFromDB.split(","));
 
-                        MyRecyclerViewAdapter adapter;
-                        adapter = new MyRecyclerViewAdapter(getActivity().getApplicationContext(), tagsList);
-                        adapter.setClickListener(new MyRecyclerViewAdapter.ItemClickListener() {
-                            @Override
-                            public void onItemClick(View view, int position) {
-                                Toast.makeText(getActivity().getApplicationContext(), "Yo", Toast.LENGTH_SHORT).show();
+                        ArrayAdapter aa = new ArrayAdapter(getActivity().getApplicationContext(), android.R.layout.simple_spinner_item, tagsList);
+                        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        //Setting the ArrayAdapter data on the Spinner
+                        spinTags.setAdapter(aa);
 
-                            }
-                        });
-                        leftRRV.setAdapter(adapter);
 
                     } else {
                         Toast.makeText(getActivity().getApplicationContext(), "No tags found", Toast.LENGTH_SHORT).show();
                     }
                     if (dataSnapshot.hasChild("hometag/value")) {
-                        homeTagsFromDB = dataSnapshot.child("tag").child("value").getValue(String.class);
+                        homeTagsFromDB = dataSnapshot.child("hometag").child("value").getValue(String.class);
                         homeTagsList = Arrays.asList(homeTagsFromDB.split(","));
 
                         MyRecyclerViewAdapter adapter1;

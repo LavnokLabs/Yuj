@@ -5,20 +5,28 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-
+        <item name="colorAccent">@color/colorGray</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
 
-    <style name="TitleBarTextAppearance" parent="android:TextAppearance">
-        <item name="android:fontFamily">@font/ahandmadefont</item>
-        <item name="android:textSize">23sp</item>
+    <style name="TextviewStyle">
+        <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:padding">15dp</item>
+    </style>
+
+    <!-- Bottom Navigation -->
+    <style name="Widget.BottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="fontFamily">@font/ahandmadefont</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="RecyclerButtonStyle">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:paddingTop">2dp</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

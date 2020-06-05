@@ -14,7 +14,6 @@ public class WelcomeScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen);
         getSupportActionBar().hide();
-
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

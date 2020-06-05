@@ -38,7 +38,7 @@ public class ConfigureProfileActivity extends AppCompatActivity {
     String TAG="com.lavnok.yuj-Logger";
 
     EditText etName, etEmail, etAge, etNumber, etMedHis;
-    CheckBox cbIsInstructor;
+    boolean cbIsInstructor=false;
     ImageView imAvatar;
     Button btUpload, btRegister, btVerify;
     FirebaseUser user;
@@ -57,7 +57,7 @@ public class ConfigureProfileActivity extends AppCompatActivity {
         etAge = findViewById(R.id.editAge);
         etNumber = findViewById(R.id.editPhoneNumber);
         etMedHis = findViewById(R.id.editTextMedHis);
-        cbIsInstructor = findViewById(R.id.checkBoxIsInstructor);
+//        cbIsInstructor = findViewById(R.id.checkBoxIsInstructor);
         imAvatar = findViewById(R.id.imageViewAvatar);
         btRegister = findViewById(R.id.buttonRegister);
         btUpload = findViewById(R.id.buttonUploadAvatar);
@@ -179,7 +179,7 @@ public class ConfigureProfileActivity extends AppCompatActivity {
 
     public void updateUserDB(){
 
-        writeNewUser(etName.getText().toString(),Integer.valueOf(etAge.getText().toString()),etMedHis.getText().toString(),cbIsInstructor.isChecked());
+        writeNewUser(etName.getText().toString(),Integer.valueOf(etAge.getText().toString()),etMedHis.getText().toString(),cbIsInstructor);
     }
 
 

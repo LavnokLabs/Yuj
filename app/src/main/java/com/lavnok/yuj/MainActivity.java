@@ -1,9 +1,11 @@
 package com.lavnok.yuj;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -23,8 +25,11 @@ public class MainActivity extends AppCompatActivity {
                 R.id.navigation_home, R.id.navigation_videos, R.id.navigation_batches,R.id.navigation_user)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+
         NavigationUI.setupWithNavController(navView, navController);
+        this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setCustomView(R.layout.titlebarlayout);
     }
 
 }

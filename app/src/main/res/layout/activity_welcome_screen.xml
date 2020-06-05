@@ -13,6 +13,7 @@
         android:text="Yuj"
         android:textAllCaps="false"
         android:layout_centerInParent="true"
+        android:textStyle="bold"
         android:drawableTop="@drawable/logo256"
         android:fontFamily="@font/ahandmadefont"
         android:textColor="@color/colorPrimary"

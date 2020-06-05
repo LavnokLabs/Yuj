@@ -12,27 +12,56 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <ViewFlipper
                     android:id="@+id/simpleViewFlipper"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     app:layout_constraintDimensionRatio="1:1"
-                    android:background="#ffffff">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
                         android:id="@+id/im1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#ffffff"
+                        android:layout_height="match_parent"
                         android:src="@drawable/banner1" />
+
+                    <ImageView
+                        android:id="@+id/im2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/banner2" />
+
+                    <ImageView
+                        android:id="@+id/im3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/banner3" />
 
                 </ViewFlipper>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <Button
+                    android:id="@+id/buttEnrollBatches"
+                    style="@style/TextviewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/customborder_2"
+                    android:text="Enroll in batches for live instructor sessions!!"
+                    android:textAlignment="center"
+                    android:textAllCaps="false" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -40,10 +69,10 @@
                 android:orientation="vertical">
 
                 <TextView
-                    style="@style/TextviewStyle"
+                    style="@style/TextviewHeaderStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Featured Programs" />
+                    android:text="Simple asanas" />
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"
@@ -59,47 +88,64 @@
                             android:layout_width="100dp"
                             android:layout_height="150dp"
                             android:layout_margin="2dp"
-                            android:background="@drawable/customborder" />
-
+                            android:background="@drawable/suryanamskara" />
                         <ImageView
                             android:layout_width="100dp"
                             android:layout_height="150dp"
                             android:layout_margin="2dp"
-                            android:background="@drawable/customborder" />
-
+                            android:background="@drawable/ashtanga" />
                         <ImageView
                             android:layout_width="100dp"
                             android:layout_height="150dp"
                             android:layout_margin="2dp"
-                            android:background="@drawable/customborder" />
-
+                            android:background="@drawable/naukasanchalan" />
                         <ImageView
                             android:layout_width="100dp"
                             android:layout_height="150dp"
                             android:layout_margin="2dp"
-                            android:background="@drawable/customborder" />
-
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="150dp"
-                            android:layout_margin="2dp"
-                            android:background="@drawable/customborder" />
-
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="150dp"
-                            android:layout_margin="2dp"
-                            android:background="@drawable/customborder" />
+                            android:background="@drawable/warmup" />
                     </LinearLayout>
                 </HorizontalScrollView>
 
 
             </LinearLayout>
 
-            <FrameLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"></FrameLayout>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
+                <TextView
+                    style="@style/TextviewHeaderStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Short practice videos" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fadeScrollbars="true">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="150dp"
+                            android:layout_height="100dp"
+                            android:layout_margin="2dp"
+                            android:background="@drawable/bodyandsoul" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+
+            </LinearLayout>
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="100dp"></LinearLayout>
 
         </LinearLayout>
 

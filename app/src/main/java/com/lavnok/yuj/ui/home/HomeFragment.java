@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import androidx.annotation.Nullable;
@@ -20,11 +22,18 @@ import com.lavnok.yuj.R;
 
 public class HomeFragment extends Fragment {
     ViewFlipper  simpleViewFlipper;
+    Button btnEnrollBatches;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-
+        btnEnrollBatches=root.findViewById(R.id.buttEnrollBatches);
+        btnEnrollBatches.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity().getApplicationContext(), "Feature coming soon", Toast.LENGTH_SHORT).show();
+            }
+        });
         simpleViewFlipper = (ViewFlipper) root.findViewById(R.id.simpleViewFlipper); // get the reference of ViewFlipper
         simpleViewFlipper.setFlipInterval(3000);
         Animation in = AnimationUtils.loadAnimation(getActivity().getBaseContext(), android.R.anim.slide_in_left);

@@ -3,140 +3,157 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
     tools:context=".ui.admin.AddVideosFragment">
 
 
-    <TableLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:shrinkColumns="0"
-        android:stretchColumns="1">
+        android:layout_height="match_parent">
 
-        <TableRow
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/labelName"
-                android:text="Video Name"></TextView>
-
-            <EditText android:id="@+id/valueName" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/labelYouTubeId"
-                android:text="Youtube Id"></TextView>
-
-            <EditText android:id="@+id/valueYouTubeId" />
-
-        </TableRow>
-        <TableRow
-            android:id="@+id/trUrl"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone">
-            <TextView
-                android:id="@+id/valueYouTubeUrl"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TableLayout
                 android:layout_width="match_parent"
-                android:text="dum"
-                android:textColor="#d92027"
-                android:layout_weight="1"
-                android:padding="20dp" />
+                android:layout_height="match_parent"
+                android:shrinkColumns="0"
+                android:stretchColumns="1">
 
-        </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/labelThumbNail"
-                android:text="ThumbNail"/>
-            <Spinner
-                android:id="@+id/valueThumbSource"
+                    <TextView
+                        android:id="@+id/labelName"
+                        android:text="Video Name"></TextView>
+
+                    <EditText android:id="@+id/valueName" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/labelYouTubeId"
+                        android:text="Youtube Id"></TextView>
+
+                    <EditText android:id="@+id/valueYouTubeId" />
+
+                </TableRow>
+                <TableRow
+                    android:id="@+id/trUrl"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+                    <TextView
+                        android:id="@+id/valueYouTubeUrl"
+                        android:layout_width="match_parent"
+                        android:text="dum"
+                        android:textColor="#d92027"
+                        android:layout_weight="1"
+                        android:padding="20dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/labelThumbNail"
+                        android:text="ThumbNail"/>
+                    <Spinner
+                        android:id="@+id/valueThumbSource"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </TableRow>
+                <TableRow
+                    android:id="@+id/trThumbNailRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+                    <ImageView
+                        android:id="@+id/valueThumbnail"
+                        android:layout_height="100dp"/>
+                    <Button
+                        android:id="@+id/bAddCustomThumb"
+                        android:text="Add Custom ThumbNail"
+                        android:visibility="gone"/>
+
+                </TableRow>
+
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/labelDescription"
+                        android:text="Video Description"></TextView>
+
+                    <EditText android:id="@+id/valueDescription"
+                        android:layout_height="100dp"
+                        android:ems="10"
+                        android:inputType="text|textMultiLine"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/labelBenefits"
+                        android:text="Benefits"></TextView>
+
+                    <EditText android:id="@+id/valueBenefits"
+                        android:ems="10"
+                        android:gravity="top"
+                        android:layout_height="50dp"
+                        android:inputType="text|textMultiLine"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/labelTags"
+                        android:text="Tags"></TextView>
+
+                    <EditText android:id="@+id/valueTags"
+                        android:ems="10"
+                        android:gravity="top"
+                        android:layout_height="50dp"
+                        android:inputType="text|textMultiLine"
+                        android:hint="Enter tags seperated by comma"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/labeDifficultyLevel"
+                        android:text="DifficultyLevel"></TextView>
+
+                    <Spinner
+                        android:id="@+id/valueDifficultyLevel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <Button
+                        android:id="@+id/buttonUploadVideo"
+                        android:text="Upload Video"
+                        android:layout_weight="1"
+                        android:layout_margin="20dp"
+                        android:textAlignment="center"/>
+                </TableRow>
+            </TableLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </TableRow>
-        <TableRow
-            android:id="@+id/trThumbNailRow"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone">
-            <ImageView
-                android:id="@+id/valueThumbnail"
-                android:layout_height="100dp"/>
-            <Button
-                android:id="@+id/bAddCustomThumb"
-                android:text="Add Custom ThumbNail"
-                android:visibility="gone"/>
-
-        </TableRow>
+                android:layout_height="50dp"></LinearLayout>
 
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/labelDescription"
-                android:text="Video Description"></TextView>
+        </LinearLayout>
+    </ScrollView>
 
-            <EditText android:id="@+id/valueDescription"
-                android:layout_height="100dp"
-                android:ems="10"
-                android:inputType="text|textMultiLine"/>
-        </TableRow>
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/labelBenefits"
-                android:text="Benefits"></TextView>
 
-            <EditText android:id="@+id/valueBenefits"
-                android:ems="10"
-                android:gravity="top"
-                android:layout_height="50dp"
-                android:inputType="text|textMultiLine"/>
-        </TableRow>
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/labelTags"
-                android:text="Tags"></TextView>
-
-            <EditText android:id="@+id/valueTags"
-                android:ems="10"
-                android:gravity="top"
-                android:layout_height="50dp"
-                android:inputType="text|textMultiLine"
-                android:hint="Enter tags seperated by comma"/>
-        </TableRow>
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/labeDifficultyLevel"
-                android:text="DifficultyLevel"></TextView>
-
-            <Spinner
-                android:id="@+id/valueDifficultyLevel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </TableRow>
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <Button
-                android:id="@+id/buttonUploadVideo"
-                android:text="Upload Video"
-                android:layout_weight="1"
-                android:layout_margin="20dp"
-                android:textAlignment="center"/>
-        </TableRow>
-    </TableLayout>
 </FrameLayout>

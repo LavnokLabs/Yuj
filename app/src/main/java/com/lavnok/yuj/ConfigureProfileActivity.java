@@ -58,9 +58,9 @@ public class ConfigureProfileActivity extends AppCompatActivity {
         etNumber = findViewById(R.id.editPhoneNumber);
         etMedHis = findViewById(R.id.editTextMedHis);
 //        cbIsInstructor = findViewById(R.id.checkBoxIsInstructor);
-        imAvatar = findViewById(R.id.imageViewAvatar);
+//        imAvatar = findViewById(R.id.imageViewAvatar);
         btRegister = findViewById(R.id.buttonRegister);
-        btUpload = findViewById(R.id.buttonUploadAvatar);
+//        btUpload = findViewById(R.id.buttonUploadAvatar);
         btVerify = findViewById(R.id.buttonVerifyEmail);
         checkUser();
 

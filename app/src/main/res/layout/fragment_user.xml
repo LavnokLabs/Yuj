@@ -1,27 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.user.UserFragment">
-
-    <TextView
-        android:id="@+id/text_user"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp" />
+    android:orientation="vertical"
+    tools:context=".ui.user.UserFragment"
+    android:padding="2dp">
 
     <ImageButton
         android:id="@+id/buttAdmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_024_edit"
+        android:background="@color/colorGray"
         android:layout_gravity="right"/>
 
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:shrinkColumns="0"
+        android:stretchColumns="1"
+        android:padding="20dp">
 
-</FrameLayout>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView android:text="Name"
+            android:textColor="@color/colorPrimary"/>
+            <EditText android:id="@+id/etName" android:enabled="false"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <TextView android:text="Email"
+                android:textColor="@color/colorPrimary"/>
+            <EditText android:id="@+id/etEmail" android:enabled="false"/>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <TextView android:text="Phone Number"
+                android:textColor="@color/colorPrimary"/>
+            <EditText android:id="@+id/etPhoneNumber" android:enabled="false"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <TextView android:text="Age"
+                android:textColor="@color/colorPrimary"/>
+            <EditText android:id="@+id/etAge" android:enabled="false"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <TextView android:text="Medical History"
+                android:textColor="@color/colorPrimary"/>
+            <EditText android:id="@+id/etMedHis" android:inputType="text|textMultiLine" android:layout_height="100dp"  android:enabled="false"/>
+        </TableRow>
+    </TableLayout>
+
+
+</LinearLayout>

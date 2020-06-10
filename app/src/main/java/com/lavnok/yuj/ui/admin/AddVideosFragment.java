@@ -110,7 +110,7 @@ public class AddVideosFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 createVideoInstance();
-//                uploadVideo();
+                uploadVideo();
                 uploadTags();
             }
         });

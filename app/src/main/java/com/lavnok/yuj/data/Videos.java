@@ -6,26 +6,21 @@ import android.util.Base64;
 import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
-import java.sql.Array;
-import java.sql.Time;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 public class Videos {
-    String TAG="com.lavnok.yuj-Logger";
+    String TAG = "com.lavnok.yuj-Logger";
 
 
     private String VideoId;
     private String TimeStamp;
     private String Name;
     private String Thumbnail;
-    private String YouTubeURL;
+    private String YouTubeUrl;
     private String Description;
     private String Benefits;
     private ArrayList<String> Tags;
@@ -38,24 +33,26 @@ public class Videos {
 
     public void setTimeStamp() {
         String ts = String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()));
-        Log.d(TAG,"Setting video timestamp for id "+VideoId+":"+ts);
+        Log.d(TAG, "Setting video timestamp for id " + VideoId + ":" + ts);
         TimeStamp = ts;
     }
 
-    public String getVideoId(){
+    public String getVideoId() {
         return VideoId;
     }
+
+    public Videos(){}
 
     public Videos(String name, Bitmap thumbnail, String youTubeURL, String description, String benefits, String[] tags, int duration, String difficultyLevel) {
         setVideoId();
         setTimeStamp();
         Name = name;
         Thumbnail = getStringFromBitmap(thumbnail);
-        YouTubeURL = youTubeURL;
+        YouTubeUrl = youTubeURL;
         Description = description;
         Benefits = benefits;
         Tags = new ArrayList();
-        for(String tag:tags)
+        for (String tag : tags)
             Tags.add(tag);
         Duration = duration;
         DifficultyLevel = difficultyLevel;
@@ -70,7 +67,7 @@ public class Videos {
         result.put("Description", Description);
         result.put("Benefits", Benefits);
         result.put("Tags", Tags);
-        result.put("YouTubeUrl", YouTubeURL);
+        result.put("YouTubeUrl", YouTubeUrl);
         result.put("Duration", Duration);
         result.put("DifficultyLevel", DifficultyLevel);
 
@@ -98,6 +95,83 @@ public class Videos {
         byte[] decodedString = Base64.decode(stringPicture, Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         return decodedByte;
+    }
+
+
+    public void setVideoId(String videoId) {
+        VideoId = videoId;
+    }
+
+    public String getTimeStamp() {
+        return TimeStamp;
+    }
+
+    public void setTimeStamp(String timeStamp) {
+        TimeStamp = timeStamp;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public String getThumbnail() {
+        return Thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        Thumbnail = thumbnail;
+    }
+
+    public String getYouTubeUrl() {
+        return YouTubeUrl;
+    }
+
+    public void setYouTubeUrl(String youTubeUrl) {
+        YouTubeUrl = youTubeUrl;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    public String getBenefits() {
+        return Benefits;
+    }
+
+    public void setBenefits(String benefits) {
+        Benefits = benefits;
+    }
+
+    public ArrayList<String> getTags() {
+        return Tags;
+    }
+
+    public void setTags(ArrayList<String> tags) {
+        Tags = tags;
+    }
+
+    public int getDuration() {
+        return Duration;
+    }
+
+    public void setDuration(int duration) {
+        Duration = duration;
+    }
+
+    public String getDifficultyLevel() {
+        return DifficultyLevel;
+    }
+
+    public void setDifficultyLevel(String difficultyLevel) {
+        DifficultyLevel = difficultyLevel;
     }
 
 

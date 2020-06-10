@@ -22,7 +22,9 @@
             <com.hbb20.CountryCodePicker
                 android:id="@+id/ccp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:ccp_textSize="15sp"
+             />
 
             <EditText
                 android:id="@+id/editText3"

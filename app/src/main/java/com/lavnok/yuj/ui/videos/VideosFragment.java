@@ -54,7 +54,7 @@ public class VideosFragment extends Fragment {
         ref = database.getReference("/videos");
         videosList = new ArrayList<Videos>();
 
-        mViewModel = ViewModelProviders.of(this).get(VideoViewModel.class);
+        mViewModel = ViewModelProviders.of(getActivity()).get(VideoViewModel.class);
         // set up the RecyclerView
         videosRecyclerView = root.findViewById(R.id.videosRecyclerView);
         videosRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
@@ -85,8 +85,7 @@ public class VideosFragment extends Fragment {
                             @Override
                             public void onItemClick(View view, int position) {
                                 Log.d(TAG, "Item clicked" + position);
-
-                                mViewModel.currentVideo=videosList.get(position);
+                                mViewModel.setVideo(videosList.get(position));
                                 ViewVideoFragment nextFrag= new ViewVideoFragment();
                                 getActivity().getSupportFragmentManager().beginTransaction()
                                         .replace(R.id.nav_host_fragment, nextFrag, "findThisFragment")

@@ -16,7 +16,9 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerFragment;
 import com.google.android.youtube.player.YouTubePlayerSupportFragmentX;
+import com.google.firebase.auth.FirebaseAuth;
 import com.lavnok.yuj.data.Videos;
 import com.lavnok.yuj.ui.videos.VideoViewModel;
 import com.lavnok.yuj.utils.Config;
@@ -25,7 +27,7 @@ import com.lavnok.yuj.utils.Config;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ViewVideoFragment extends Fragment {
+public class ViewVideoFragment extends Fragment implements YouTubePlayer.OnInitializedListener {
     final String TAG = "com.lavnok.yuj-Logger";
     VideoViewModel mViewModel;
     Videos mVideo;
@@ -34,8 +36,8 @@ TextView tvName,tvBenefits,tvDescription,tvDifficultyLevel,tvTags;
 
     //youtube props
     private static final int RECOVERY_REQUEST = 1;
-    private YouTubePlayer youTubePlayer;
-
+//    private YouTubePlayer youTubePlayer;
+//
 //    private YouTubePlayerFragment youTubePlayerFragment;
 
     public ViewVideoFragment() {
@@ -78,29 +80,35 @@ TextView tvName,tvBenefits,tvDescription,tvDifficultyLevel,tvTags;
 
         YouTubePlayerSupportFragmentX youTubePlayerFragment = YouTubePlayerSupportFragmentX.newInstance();
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        youTubePlayerFragment.initialize(Config.YOUTUBE_API_KEY, new YouTubePlayer.OnInitializedListener() {
-            @Override
-            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                if (!b) {
-                    youTubePlayer.cueVideo(mVideo.getYouTubeUrl());
-                }
-            }
+        youTubePlayerFragment.initialize(Config.YOUTUBE_API_KEY, this);
 
-            @Override
-            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-                if (youTubeInitializationResult.isUserRecoverableError()) {
-                    youTubeInitializationResult.getErrorDialog(getActivity(), 1).show();
-                } else {
-                    Toast.makeText(getActivity(),
-                            "YouTubePlayer.onInitializationFailure(): " + youTubeInitializationResult.toString(),
-                            Toast.LENGTH_LONG).show();
-                }
 
-            }
-        });
+
         transaction.replace(R.id.frame_fragment, youTubePlayerFragment).commit();
 
         return root;
+    }
+
+    @Override
+    public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+        if (!b) {
+//            youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.CHROMELESS);
+//            youTubePlayer.loadVideo();
+            youTubePlayer.cueVideo(mVideo.getYouTubeUrl());
+//            youTubePlayer.
+        }
+    }
+
+    @Override
+    public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+        if (youTubeInitializationResult.isUserRecoverableError()) {
+            youTubeInitializationResult.getErrorDialog(getActivity(), 1).show();
+        } else {
+            Toast.makeText(getActivity(),
+                    "YouTubePlayer.onInitializationFailure(): " + youTubeInitializationResult.toString(),
+                    Toast.LENGTH_LONG).show();
+        }
+
     }
 
 }

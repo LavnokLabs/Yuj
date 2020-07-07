@@ -37,4 +37,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:19.3.0'
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
     implementation 'com.hbb20:ccp:2.4.0'
+//    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
 }

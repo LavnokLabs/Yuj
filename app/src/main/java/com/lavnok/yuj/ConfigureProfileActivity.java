@@ -29,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.lavnok.yuj.MainActivity;
 import com.lavnok.yuj.R;
 import com.lavnok.yuj.data.User;
+import com.lavnok.yuj.utils.FireBaseController;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -78,7 +79,7 @@ public class ConfigureProfileActivity extends AppCompatActivity {
             }
         });
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FireBaseController.getInstance().getReference();
     }
 
     public void checkUser() {

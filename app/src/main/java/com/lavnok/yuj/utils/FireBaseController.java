@@ -4,16 +4,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class FireBaseController {
-    final FirebaseDatabase database=FirebaseDatabase.getInstance();
+    final static FirebaseDatabase database=FirebaseDatabase.getInstance();
+    static {
+        database.setPersistenceEnabled(true);
+    }
     static FireBaseController db=new FireBaseController();
      DatabaseReference ref;
-    public static FireBaseController getInstance( ) {
-        return  db;
+    public static FirebaseDatabase getInstance( ) {
+        return database;
     }
-
-    private void setRef(String path){
-        ref = database.getReference(path);
-    }
-
-//    static
 }

@@ -5,16 +5,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,14 +21,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.lavnok.yuj.R;
 import com.lavnok.yuj.ViewVideoFragment;
 import com.lavnok.yuj.data.Videos;
-import com.lavnok.yuj.data.VideosTrimmed;
-import com.lavnok.yuj.ui.admin.AddVideosFragment;
-import com.lavnok.yuj.utils.MyRecyclerViewAdapter;
 import com.lavnok.yuj.utils.VideoRecyclerViewAdapter;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class VideosFragment extends Fragment {
@@ -50,8 +39,9 @@ public class VideosFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_videos, container, false);
-
+//        database.setPersistenceEnabled(true);
         ref = database.getReference("/videos");
+//        ref.keepSynced(true);
         videosList = new ArrayList<Videos>();
 
         mViewModel = ViewModelProviders.of(getActivity()).get(VideoViewModel.class);
@@ -86,7 +76,7 @@ public class VideosFragment extends Fragment {
                             public void onItemClick(View view, int position) {
                                 Log.d(TAG, "Item clicked" + position);
                                 mViewModel.setVideo(videosList.get(position));
-                                ViewVideoFragment nextFrag= new ViewVideoFragment();
+                                ViewVideoFragment nextFrag = new ViewVideoFragment();
                                 getActivity().getSupportFragmentManager().beginTransaction()
                                         .replace(R.id.nav_host_fragment, nextFrag, "findThisFragment")
                                         .addToBackStack(null)
